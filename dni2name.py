@@ -24,21 +24,36 @@ class dni2name:
 		return [self.checkDNI(id) for id in range(int(min), int(max))]
 
 	'''
-		use heuristics to extract name from the given google result (link, title and description of a webpage)
+		use heuristics to extract name from the given google result
+		a google result contains: link, title, description and other values of 
+		the ranked page usually accessed humanly through google.com
 		this is a example, it could be as complex as you wish
 	'''
 	def extractName(self, result):
-		if "www.dateas.com" in result.link:
-			return result.name[0:result.name.find(" -")]
 		
+		'''
+			buscardatos.com returns a title like this: "Garcia Minzoni Schmid Belen, DNI 33.779.880"
+			we take here the part before the comma (",")
+		'''
+
 		if "buscardatos.com" in result.link:
 			return result.name[0:result.name.find(",")]
 		return False
+		
+		'''
+			www.dateas.com returns a title like this: "Esteban Roitberg - CUIT 20-33779884-6"
+			we take here the part before the "-"
+		'''
+		if "www.dateas.com" in result.link:
+			return result.name[0:result.name.find(" -")]
+		
+
 
 	'''
 		check all google results and return the first name found
 		the algorithm is an iteration for pedagogical reasons
-		it could be like: 'next( (self.extractName(results) for results in google_results if self.extractName(result) is not False), False)'
+		it could be like: 'next( (self.extractName(results) for results in 
+			google_results if self.extractName(result) is not False), False)'
 	'''
 	def findName(self, google_results):
 		for result in google_results:
