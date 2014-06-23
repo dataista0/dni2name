@@ -26,12 +26,10 @@ class dni2name:
 		self.checkDNI("33779884") #Loi's ID number
 
 	'''
-		check for a list of DNIs
+		scraps for names between DNI min and DNI max
 	'''
-	def run(self):
-		some_ids = range(33779884, 33779910)
-		names = [self.checkDNI(id) for id in some_ids]
-
+	def checkRange(self, min, max):
+		return [self.checkDNI(id) for id in range(int(min), int(max))]
 
 	'''
 		use heuristics to extract name from the given google result (link, title and description of a webpage)
@@ -57,15 +55,13 @@ class dni2name:
 				return name
 		return False
 
-
-33799335 Angeletti Julieta Belen
-
 if __name__ == "__main__":
     ans = dni2name()
 
     if len(sys.argv) == 1:
     	ans.runTest()
-    elif len(sys.argv) > 1 and sys.argv[1] == "run":
-    	ans.run()
-    else:
+    elif len(sys.argv) == 2:#33799335 Angeletti Julieta Belen    
     	ans.checkDNI(sys.argv[1])
+    elif len(sys.argv) == 3:
+    	ans.checkRange(sys.argv[1], sys.argv[2])
+    
