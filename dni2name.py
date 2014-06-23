@@ -18,14 +18,6 @@ class dni2name:
 		return name
 
 	'''
-		a simple use case
-		>>> python dni2name.py test
-		33779884 Esteban Roitberg
-	'''
-	def runTest(self):
-		self.checkDNI("33779884") #Loi's ID number
-
-	'''
 		scraps for names between DNI min and DNI max
 	'''
 	def checkRange(self, min, max):
@@ -55,12 +47,22 @@ class dni2name:
 				return name
 		return False
 
+	'''
+		a simple use case
+		>>> python dni2name.py test
+		33779884 Esteban Roitberg
+	'''
+	def runExample(self):
+		self.checkDNI("33779884") #Loi's ID number
+
+
+
 if __name__ == "__main__":
     ans = dni2name()
 
     if len(sys.argv) == 1:
-    	ans.runTest()
-    elif len(sys.argv) == 2:#33799335 Angeletti Julieta Belen    
+    	ans.runExample()
+    elif len(sys.argv) == 2:
     	ans.checkDNI(sys.argv[1])
     elif len(sys.argv) == 3:
     	ans.checkRange(sys.argv[1], sys.argv[2])
