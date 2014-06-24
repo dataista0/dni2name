@@ -1,7 +1,14 @@
 dni2name
 ===============
 
-Returns a name from a DNI number using Google. The objective is to show the simplicity and availability of sensitive information.
+Returns a name from a DNI number using Google this way:
+```
+julian@garden-of-eden:~/git/dni2name$ python dni2name.py 33779884
+33779884 Esteban Roitberg
+```
+
+dni2name searchs in google for the query: "DNI input-number" and the extract the full name from the title using only two hand written rules.
+The file dni2name.py contains the code that does this. I commented it a lot so it's understandable for people that knows only a little of programming. The language used is python. (''' The text between three quotes is a comment. ''' and the rest is the code).
 
 ##Usage
 
