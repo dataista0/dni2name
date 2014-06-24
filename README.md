@@ -8,7 +8,7 @@ julian@garden-of-eden:~/git/dni2name$ python dni2name.py 33779884
 33779884 Esteban Roitberg
 ```
 
-dni2name searchs in google for the query: "DNI input-number" and then extract the full name from the title using only two hand written rules.
+dni2name searchs in google for the query: "DNI input-number" and then extracts the full name from the title using only two hand written rules.
 
 The file dni2name.py contains the code that does this. To run it you must know what git and python means. If you know, skip the next paragraph and go to **Usage**. If you don't, continue reading:
 
