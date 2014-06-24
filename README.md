@@ -1,11 +1,18 @@
 dni2name
 ===============
 
-Returns a name from a DNI number using Google. The objective is to show the simplicity and availability of sensitive information.
+Returns a name from a DNI number using Google this way:
+```
+julian@garden-of-eden:~/git/dni2name$ python dni2name.py 33779884
+33779884 Esteban Roitberg
+```
+
+dni2name searchs in google for the query: "DNI input-number" and the extract the full name from the title using only two hand written rules.
+The file dni2name.py contains the code that does this. I commented it a lot so it's understandable for people that knows only a little of programming. The language used is python. (''' The text between three quotes is a comment. ''' and the rest is the code).
 
 ##Usage
 
-**Clone**
+**Clone and use**
 ```
 julian@garden-of-eden:~/git$ git clone git@github.com:julian3833/dni2name.git
 julian@garden-of-eden:~/git$ cd dni2name
@@ -40,6 +47,7 @@ julian@garden-of-eden:~/git/dni2name$ python dni2name.py 33779900 33779910
 ##Dependencies
 
 **This git repo**
+
 Uses this library: https://github.com/BirdAPI/Google-Search-API. The files are included for simplicity.  
 
 ```
@@ -48,7 +56,8 @@ git clone https://github.com/BirdAPI/Google-Search-API.git GoogleSearchAPI/
 
 **Enviroment**
 
-You need a Linux and I think that's all
+You need a Linux and I think that's all.
+
 Install git and python. It's something like this:
 ```
 apt-get install git python
