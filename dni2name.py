@@ -3,11 +3,32 @@ import sys
 from GoogleSearchAPI.google import Google
 
 '''
-	dni2name
-	@author github.com/julian3833
-	uses 
-		a google result contains: link, title, description and other values of 
-		the ranked page usually accessed humanly through google.com	
+	dni2name: returns a name given a dni number using google and two simple extraction rules. 
+
+	Writen and commented to be understood by anyone who wants: contact me if you don't understand and you want. 
+	
+	@author julian3833 github.com/julian3833
+	
+	Includes GoogleSearchAPI, a library that request and process google search result pages. (It's a git project, see the readme for the link).
+	
+	Google.search()  returns a list of google results, each of which contains the link, title, description and other values of 
+	the ranked pages that we usually access through www.google.com	
+
+	dni2name.extractName(): applies over this pages two simple rules based on two human trivial observations:
+	
+	* if the site is 'buscardatos.com' the title has the form "Peller Julian , D.N.I. 1234567890"
+	* if the site is 'dateas.com  then the title has the form "Julian Peller - CUIT 20-1234567890-4"  
+	
+	In the first case the code returns the part before the "," and in the second it returns the part before the "-".
+	In other case it does nothing and return no full name.
+
+
+	Despite this simplicity, the density of results seems high in some regions of the id numbers.
+	I think using this a lot is not legal, so, you know, don't use it a lot. 
+
+	(Really, Google will ban your I.P. Making a huge human db is not trivial, not legal and not cheap.)
+	
+	
 
 '''
 
