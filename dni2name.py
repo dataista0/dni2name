@@ -2,32 +2,36 @@
 import sys
 from GoogleSearchAPI.google import Google
 
+'''
+	dni2name
+	@author github.com/julian3833
+	uses 
+		a google result contains: link, title, description and other values of 
+		the ranked page usually accessed humanly through google.com	
+
+'''
 
 
 class dni2name:
 
 	'''
-		searchs for a DNI in google and try to extract a full name
+		base method: searchs for a DNI in google and try to extract a full name
 	'''
 	def checkDNI(self, id):
-		results = Google.search("DNI "+str(id))
-		name = self.findName(results)
+		
+		google_results = Google.search("DNI "+str(id))
 
-		if name:
-			print id, name
-		return name
+		#check all the pages returned by google and try to extract full names with simple rules
+		for result in google_results:
+			name = self.extractName(result)
+			if name is not False:
+				print id, name
+				return name
+		
+		return False
 
 	'''
-		scraps for names between DNI min and DNI max
-	'''
-	def checkRange(self, min, max):
-		return [self.checkDNI(id) for id in range(int(min), int(max))]
-
-	'''
-		use heuristics to extract name from the given google result
-		a google result contains: link, title, description and other values of 
-		the ranked page usually accessed humanly through google.com
-		this is a example, it could be as complex as you wish
+		two simple rules to extract fullnames from a given google ranked page
 	'''
 	def extractName(self, result):
 		
@@ -38,8 +42,6 @@ class dni2name:
 
 		if "buscardatos.com" in result.link:
 			return result.name[0:result.name.find(",")]
-		return False
-		
 		'''
 			www.dateas.com returns a title like this: "Esteban Roitberg - CUIT 20-33779884-6"
 			we take here the part before the "-"
@@ -48,23 +50,18 @@ class dni2name:
 			return result.name[0:result.name.find(" -")]
 		
 
+		return False
+		
 
 	'''
-		check all google results and return the first name found
-		the algorithm is an iteration for pedagogical reasons
-		it could be like: 'next( (self.extractName(results) for results in 
-			google_results if self.extractName(result) is not False), False)'
+		searchs for names for the dnis between min and max
 	'''
-	def findName(self, google_results):
-		for result in google_results:
-			name = self.extractName(result)
-			if name is not False:
-				return name
-		return False
+	def checkRange(self, min, max):
+		return [self.checkDNI(id) for id in range(int(min), int(max))]
 
 	'''
 		a simple use case
-		>>> python dni2name.py test
+		>>> python dni2name.py
 		33779884 Esteban Roitberg
 	'''
 	def runExample(self):
