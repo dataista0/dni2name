@@ -12,7 +12,7 @@ The file dni2name.py contains the code that does this. I commented it a lot so i
 
 ##Usage
 
-**Clone**
+**Clone and use**
 ```
 julian@garden-of-eden:~/git$ git clone git@github.com:julian3833/dni2name.git
 julian@garden-of-eden:~/git$ cd dni2name
@@ -47,6 +47,7 @@ julian@garden-of-eden:~/git/dni2name$ python dni2name.py 33779900 33779910
 ##Dependencies
 
 **This git repo**
+
 Uses this library: https://github.com/BirdAPI/Google-Search-API. The files are included for simplicity.  
 
 ```
@@ -55,7 +56,8 @@ git clone https://github.com/BirdAPI/Google-Search-API.git GoogleSearchAPI/
 
 **Enviroment**
 
-You need a Linux and I think that's all
+You need a Linux and I think that's all.
+
 Install git and python. It's something like this:
 ```
 apt-get install git python
