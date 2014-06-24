@@ -52,14 +52,14 @@ class dni2name:
 	def extractName(self, result):
 		
 		'''
-			buscardatos.com returns a title like this: "Garcia Minzoni Schmid Belen, DNI 33.779.880"
+			buscardatos.com returns a title like this: "Julian Peller, DNI 12345678"
 			we take here the part before the comma (",")
 		'''
 
 		if "buscardatos.com" in result.link:
 			return result.name[0:result.name.find(",")]
 		'''
-			www.dateas.com returns a title like this: "Esteban Roitberg - CUIT 20-33779884-6"
+			www.dateas.com returns a title like this: "Julian Peller - CUIT 20-123456789-6"
 			we take here the part before the "-"
 		'''
 		if "www.dateas.com" in result.link:
