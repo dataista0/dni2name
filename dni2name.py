@@ -7,7 +7,8 @@ from GoogleSearchAPI.google import Google
 	
 	@author julian3833 github.com/julian3833
 	
-	Includes GoogleSearchAPI, a library that request and process google search result pages. (It's a git project, see the readme for the link).
+	Includes GoogleSearchAPI, a library that request and process google search result pages. 
+	(It's a git project, see the readme for the link).
 	
 	Google.search() returns a list of google results, each of which contains the link, title, description and other values of 
 	the ranked pages that we usually access through www.google.com	
@@ -17,8 +18,8 @@ from GoogleSearchAPI.google import Google
 	* if the site is 'buscardatos.com' then the title has the form "Peller Julian , D.N.I. 1234567890"
 	* if the site is 'dateas.com  then the title has the form "Julian Peller - CUIT 20-1234567890-4"  
 	
-	In the first case the code returns the text before the "," (i.e: "Peller Julian") and in the second it returns the part before the "-".
-	In other case it does nothing and return no full name.
+	In the first case the code returns the text before the "," (i.e: "Peller Julian") and in the second it returns the 
+	part before the "-". In other case it does nothing and return no full name.
 
 	Despite this simplicity, the density of results seems high in some regions of the id numbers.
 	I think using this a lot is not legal, so, you know, don't use it a lot. 
